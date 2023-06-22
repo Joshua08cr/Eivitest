@@ -9,6 +9,7 @@ import {
     ScrollView,
     Alert,
     _View,
+    ImageBackground,
 } from 'react-native'
 import React from 'react'
 import { StatusBar } from "expo-status-bar";
@@ -38,17 +39,25 @@ const { width } = Dimensions.get("window");
 const Tab = createBottomTabNavigator(); // <--Crea el stackbottomNavigation
 
 const HomeScreen = () => { // <--Le cambie la funcion a una flecha por que es mas bonito ;)
+    const handlePress = () => {
+        // Lógica para manejar el evento de presionar la imagen
+        console.log('La imagen ha sido presionada');
+      };   
     return (
-        <View
-            style={{
-                fontSize: 30,
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-            }}
-        >
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>Home Screen</Text>
-        </View>
+        <ImageBackground source={require('../assets/R.jpg')} style={styles.backgroundImage}>
+                <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+                    <Image source={require('../assets/ciencias.jpg')} style={styles.buttonImage} />
+                    <Text style={styles.buttonText}>Ciencias</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button1} activeOpacity={0.7}>
+                    <Image source={require('../assets/biolo.jpg')} style={styles.buttonImage1} />
+                    <Text style={styles.buttonText1}>Biología</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button2} activeOpacity={0.7}>
+                    <Image source={require('../assets/mate.jpg')} style={styles.buttonImage2} />
+                    <Text style={styles.buttonText2}>Matemáticas</Text>
+                </TouchableOpacity>
+        </ImageBackground>
     );
 }
 
@@ -175,15 +184,15 @@ const Tabs = () => {
         <Tab.Navigator  // <--Contenedor de la barra de abajo 
             initialRouteName="Home"
             screenOptions={{
-                tabBarActiveTintColor: "#6a6ce0",
+                tabBarActiveTintColor: "#B7E4C7",
                 showLabel: false,
                 tabBarStyle: { // ? <--Si quiere estilizar la barra de navegacion aqui es
                     flex: 1,
                     position: "absolute",
-                    left: 20,
-                    right: 20,
+                    left: 10,
+                    right: 10,
                     margin: 0,
-                    bottom: 30,
+                    bottom: 15,
                     elevation: 0,
                     borderRadius: 15,
                     height: 80,
@@ -196,8 +205,8 @@ const Tabs = () => {
                 options={{
                     tabBarLabel: "",
                     tabBarIcon: ({ focused }) => ( // <-- Estos son los iconos de la barra de navegacion aqui es donde se cambian
-                        <View style={{ alignItems: 'center', justifyContent: 'center', height: 60, marginTop: 40, }}>
-                            {focused ? <Ionicons name="ios-settings" size={35} color="#435B71" /> : <Ionicons name="ios-settings-outline" size={35} color="#435B71" />}
+                        <View style={{ alignItems: 'center', justifyContent: 'center', height: 60, marginTop: 15, }}>
+                            {focused ? <Ionicons name="ios-settings" size={35} color="#03bb85" /> : <Ionicons name="ios-settings-outline" size={35} color="#435B71" />}
                         </View>
                     )
                 }}
@@ -209,8 +218,8 @@ const Tabs = () => {
                     tabBarLabel: "",
                     tabBarIcon: ({ focused }) => {
                         return (
-                            <View style={{ alignItems: 'center', justifyContent: 'center', height: 60, marginTop: 40, }}>
-                                {focused ? <Ionicons name="home" size={35} color="#435B71" /> : <Ionicons name="ios-home-outline" size={35} color="#435B71" />}
+                            <View style={{ alignItems: 'center', justifyContent: 'center', height: 60, marginTop: 15, }}>
+                                {focused ? <Ionicons name="book-outline" size={35} color="#03bb85" /> : <Ionicons name="book-outline" size={35} color="#435B71" />}
                             </View>
                         )
                     },
@@ -226,8 +235,8 @@ const Tabs = () => {
                     tabBarLabel: "",
                     tabBarIcon: ({ focused }) => {
                         return (
-                            <View style={{ alignItems: 'center', justifyContent: 'center', height: 60, marginTop: 40, }}>
-                                {focused ? <Octicons name="person-fill" size={35} color="#435B71" /> : <Octicons name="person" size={35} color="#435B71" />}
+                            <View style={{ alignItems: 'center', justifyContent: 'center', height: 60, marginTop: 15, }}>
+                                {focused ? <Octicons name="person-fill" size={35} color="#03bb85" /> : <Octicons name="person" size={35} color="#435B71" />}
                             </View>
                         )
                     },
@@ -277,5 +286,106 @@ const styles = StyleSheet.create({
         color: "gray",
         marginTop: 11,
     },
-    button: {},
+    backgroundImage:{
+        flex: 1,
+        resizeMode: 'cover',
+        alignItems:'flex-start',
+        justifyContent:'center',
+    },
+    button: {
+        width:350,
+        height:160,
+        marginTop:-100,
+        left:-10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+        backgroundColor: '#ccc', // Color de fondo del botón
+        shadowColor: '#000', // Color de la sombra
+        shadowOffset: {
+        width: 0,
+        height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 3,
+      },
+      buttonImage: {
+        width: '100%',
+        height: '100%',
+        opacity: 1,
+        borderRadius:15,
+      },
+      buttonText: {
+        position: 'absolute',
+        color: '#fff', // Color del texto
+        fontSize: 36,
+        fontWeight: 'bold',
+      },    
+      button1: {
+        width:330,
+        height:160,
+        marginTop:-30,
+        left:-10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+        backgroundColor: '#ccc', // Color de fondo del botón
+        shadowColor: '#000', // Color de la sombra
+        shadowOffset: {
+        width: 0,
+        height: 2,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 5,
+      },
+      buttonImage1: {
+        ...StyleSheet.absoluteFillObject,
+        width: '100%',
+        height: '100%',
+        borderRadius:15,
+        opacity: 1,
+      },
+      buttonText1: {
+        position: 'absolute',
+        color: '#fff', // Color del texto
+        fontSize: 36,
+        fontWeight: 'bold',
+      },
+      button2: {
+        width:300,
+        height:160,
+        marginTop:-20,
+        left:-10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 15,
+        backgroundColor: '#ccc', // Color de fondo del botón
+        shadowColor: '#000', // Color de la sombra
+        shadowOffset: {
+        width: 0,
+        height: 2,
+        },
+        shadowOpacity: 0.7,
+        shadowRadius: 3,
+        elevation: 8,
+      },
+      buttonImage2: {
+        ...StyleSheet.absoluteFillObject,
+        width: '100%',
+        height: '100%',
+        borderRadius:15,
+        opacity: 1,
+      },
+      buttonText2: {
+        position: 'absolute',
+        color: '#f1f1f1', // Color del texto
+        fontSize: 36,
+        fontWeight: 'bold',
+        textAlign:'right',
+      },
 });
