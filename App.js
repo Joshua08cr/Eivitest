@@ -9,7 +9,7 @@ import Tabs from "./components/Tabs";
 import { firebase } from "./firebaseConfig";
 
 //LoginScreen
-import LoginScreen from "./screen/LoginScreen"
+import LoginScreen from "./screen/LoginScreen";
 
 export default function App() {
   const [user, setUser] = useState();
@@ -32,15 +32,11 @@ export default function App() {
   return (
     <>
       {!user ? (
-        <>
-          <LoginScreen/>
-        </>
+        <LoginScreen />
       ) : (
-        <>
-          <NavigationContainer>
-            <Tabs />
-          </NavigationContainer>
-        </>
+        <NavigationContainer>
+          <Tabs />
+        </NavigationContainer>
       )}
     </>
   );

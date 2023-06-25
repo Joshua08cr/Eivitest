@@ -27,10 +27,10 @@ import Register from "../components/Register";
 //SVG and styles properties
 import Svg, { Path, Defs, LinearGradient, Stop } from "react-native-svg";
 
-//Status Bar 
+//Status Bar
 import { StatusBar } from "expo-status-bar";
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -61,7 +61,6 @@ const LoginScreen = ({ navigation }) => {
       .catch((error) => {
         console.log(error);
       });
-    navigation.navigate("Home");
   };
 
   const SvgTop = () => {
