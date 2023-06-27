@@ -1,5 +1,5 @@
-import { View } from "react-native";
 import React from "react";
+import { View } from "react-native";
 
 //Iconos si quiere otros vaya a la pagina de expo icons
 import { Octicons, Ionicons } from "@expo/vector-icons";
@@ -118,33 +118,6 @@ const Tabs = () => {
           headerShown: false,
         }}
       />
-      {/* <Tab.Screen
-        name="Profile"
-        component={LoginScreen}
-        options={{
-          headerShown: false,
-          tabBarLabel: "",
-          tabBarIcon: ({ focused }) => {
-            return (
-              <View
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  height: 60,
-                  marginTop: 15,
-                }}
-              >
-                {focused ? (
-                  <Octicons name="person-fill" size={35} color="#03bb85" />
-                ) : (
-                  <Octicons name="person" size={35} color="#435B71" />
-                )}
-              </View>
-            );
-          },
-          headerShown: false,
-        }}
-      /> */}
     </Tab.Navigator>
   );
 };

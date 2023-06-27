@@ -32,12 +32,16 @@ import Register from "../components/Register";
 //SVG and styles properties
 import Svg, { Path, Defs, LinearGradient, Stop } from "react-native-svg";
 
-//Status Bar 
+//Status Bar
 import { StatusBar } from "expo-status-bar";
 
+<<<<<<< HEAD
 const  Stack = createStackNavigator;
 
 const LoginScreen = ({ navigation }) => {
+=======
+const LoginScreen = () => {
+>>>>>>> e408423f846321baeee54a17a880d83c647d0016
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
