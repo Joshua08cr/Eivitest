@@ -1,49 +1,54 @@
 import React from "react";
 import {
   StyleSheet,
+  View,
   Text,
   Image,
   Dimensions,
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+
+//pantallas de clases
 
 const { width } = Dimensions.get("window");
 
+
+
 const HomeScreen = () => {
   // <--Le cambie la funcion a una flecha por que es mas bonito ;)
-  const handlePress = () => {
-    // Lógica para manejar el evento de presionar la imagen
-    console.log("La imagen ha sido presionada");
-  };
-
-  return (
-    <ImageBackground
-      source={require("../assets/R.jpg")}
-      style={styles.backgroundImage}
-    >
-      <TouchableOpacity style={styles.button} activeOpacity={0.7}>
-        <Image
-          source={require("../assets/ciencias.jpg")}
-          style={styles.buttonImage}
-        />
-        <Text style={styles.buttonText}>Ciencias</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} activeOpacity={0.7}>
-        <Image
-          source={require("../assets/biolo.jpg")}
-          style={styles.buttonImage1}
-        />
-        <Text style={styles.buttonText1}>Biología</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.button2} activeOpacity={0.7}>
-        <Image
-          source={require("../assets/mate.jpg")}
-          style={styles.buttonImage2}
-        />
-        <Text style={styles.buttonText2}>Matemáticas</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+  const navigation = useNavigation();
+  return  (
+      <ImageBackground
+        source={require("../assets/R.jpg")}
+        style={styles.backgroundImage}
+      >
+        <TouchableOpacity  onPress={() => {
+          navigation.navigate("CienciasScreen")
+        }}  style={styles.button} activeOpacity={0.7}>
+          <Image
+            source={require("../assets/ciencias.jpg")}
+            style={styles.buttonImage}
+          />
+          <Text style={styles.buttonText}>Ciencias</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button1} activeOpacity={0.7}>
+          <Image
+            source={require("../assets/biolo.jpg")}
+            style={styles.buttonImage1}
+          />
+          <Text style={styles.buttonText1}>Biología</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button2} activeOpacity={0.7}>
+          <Image
+            source={require("../assets/mate.jpg")}
+            style={styles.buttonImage2}
+          />
+          <Text style={styles.buttonText2}>Matemáticas</Text>
+        </TouchableOpacity>
+      </ImageBackground>
   );
 };
 

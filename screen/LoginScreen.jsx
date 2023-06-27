@@ -20,6 +20,11 @@ import {
 } from "firebase/auth";
 import app from "../firebaseConfig";
 
+//navigation
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
 //Register and gradient components
 import ButtonGradient from "../components/ButtonGradient";
 import Register from "../components/Register";
@@ -29,6 +34,8 @@ import Svg, { Path, Defs, LinearGradient, Stop } from "react-native-svg";
 
 //Status Bar 
 import { StatusBar } from "expo-status-bar";
+
+const  Stack = createStackNavigator;
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
@@ -60,8 +67,8 @@ const LoginScreen = ({ navigation }) => {
       })
       .catch((error) => {
         console.log(error);
+        navigation.navigate("Home");
       });
-    navigation.navigate("Home");
   };
 
   const SvgTop = () => {
@@ -110,6 +117,7 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
+    
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <View style={styles.mainContainer}>
         <View style={styles.containerSVG}>

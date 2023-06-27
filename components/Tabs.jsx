@@ -5,12 +5,40 @@ import React from "react";
 import { Octicons, Ionicons } from "@expo/vector-icons";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Tab = createBottomTabNavigator(); // <--Crea el stackbottomNavigation
+const HomeStackNavigation = createStackNavigator();//
 
 //Tabs Components
 import SettingsScreen from "../screen/SettingsScreen";
 import HomeScreen from "../screen/HomeScreen";
+
+//Class Screens
+import Ciencias from "../screen/CienciasScreen"
+
+const HomeStack = () =>{
+  return(
+    <HomeStackNavigation.Navigator 
+        initialRouteName="HomeScreen"
+    >
+        <HomeStackNavigation.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{
+              headerShown: false,
+        }}
+      />
+        <HomeStackNavigation.Screen
+          name="CienciasScreen"
+          component={Ciencias}
+          options={{
+            headerShown: false,
+        }}
+      />
+    </HomeStackNavigation.Navigator>
+  )
+}
 
 const Tabs = () => {
   return (
@@ -60,11 +88,12 @@ const Tabs = () => {
               )}
             </View>
           ),
+          headerShown:false,
         }}
       />
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarLabel: "",
           tabBarIcon: ({ focused }) => {
